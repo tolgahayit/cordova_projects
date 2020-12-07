@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.filmpedia.com" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>FilmPedia</name>
+    <description>
+        Boğazlıyan MYO öğrencileri tarafından kodlanmıştır.
+    </description>
+    <author email="tolga.hayit@bozok.edu.tr" href="http://myobogazliyan.bozok.edu.tr">
+        Boğazlıyan MYO Bilgisayar Teknolojileri Takımı
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="Fullscreen" value="true" />
+    <preference name="WebViewBounce" value="true" />
+    <preference name="Orientation" value="default" />
+
+    <feature name="Android">
+        <param name="cordova-plugin-contacts" value="org.apache.cordova.contacts" />
+    </feature>
+
+    <platform name="android">
+        <icon src="www/img/ikonlar/36.png" platform="android" width="36" height="36" density="ldpi" />
+        <icon src="www/img/ikonlar/48.png" platform="android" width="48" height="48" density="mdpi" />
+        <icon src="www/img/ikonlar/72.png" platform="android" width="72" height="72" density="hdpi" />
+        <icon src="www/img/ikonlar/96.png" platform="android" width="96" height="96" density="xhdpi" />
+        <icon src="www/img/ikonlar/144.png" platform="android" width="144" height="144" density="xxhdpi" />
+        <icon src="www/img/ikonlar/192.png" platform="android" width="192" height="192" density="xxxhdpi" />
+
+        <splash src="platforms/android/res/screen/splash-port-xhdpi.png" density="port-xhdpi"/>
+        <splash src="platforms/android/res/screen/splash-port-hdpi.png" density="port-hdpi"/>
+        <splash src="platforms/android/res/screen/splash-port-mdpi.png" density="port-mdpi"/>
+        <splash src="platforms/android/res/screen/splash-port-ldpi.png" density="port-ldpi"/>
+    </platform>
+
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+</widget>
+
