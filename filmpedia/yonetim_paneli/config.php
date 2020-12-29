@@ -4,8 +4,8 @@ error_reporting();
 MySQL Bağlantısı
 */
 $mysqli = new mysqli("localhost", "admin", "123123", "filmpedia");
-if (!$mysqli) {
-    echo 'Veritabanina baglanilamiyor ...' . $mysqli->error;
+if ($mysqli -> connect_errno) {
+    echo 'Veritabanina baglanilamiyor ...' . $mysqli -> connect_error;
     exit();
 }
 
