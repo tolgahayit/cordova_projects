@@ -1,5 +1,4 @@
 <?php
-error_reporting();
 /*
 MySQL Bağlantısı
 */

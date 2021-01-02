@@ -1,4 +1,7 @@
-<html lang="en">
+<?php
+include("session.php");
+?>
+<html lang="tr">
 
 <head>
     <meta charset="UTF-8">
@@ -9,12 +12,40 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="css/custom.css">
 
-    <?php 
+    <?php
+    if (isset($_SESSION["yonetici"])) {
+        header('Location: ana-sayfa.php');
+        exit;
+    }
+
     include("config.php");
 
-    if($_POST){
+    if ($_POST) {
         //veritabanı sorgulaması yapılacak eğer kullanıcı sisteme kayıtlı ise ana sayfaya yönlendirecek.
-        
+        $eposta = $_POST["eposta"];
+        $sifre = md5($_POST["sifre"]);
+
+        //print_r($_POST);
+
+        //böyle bir kullanıcı var mı yok mu?
+        $veriler = $mysqli->query("select * from yoneticiler where eposta='$eposta' and sifre='$sifre'");
+        if (mysqli_num_rows($veriler)) {
+            //giriş başarılı mesajı gösterilir
+            echo '<div class="container"><div class="alert alert-success text-center" role="alert">
+            Giriş başarılı yönlendiriliyorsunuz...
+          </div></div>';
+
+            //3 sn sonra yönlendirici kod eklenir Bkz. header() fonksiyonu
+            header("Refresh:3; url=ana-sayfa.php", true, 303);
+
+            //Kullanıcı SESSION kaydı yedeklenir
+            $row = mysqli_fetch_array($veriler);
+            $_SESSION["yonetici"] = $row;
+        } else {
+            echo '<div class="container"><div class="alert alert-danger text-center" role="alert">
+            Sistemde böyle bir kullanıcı yoktur!
+          </div></div>';
+        }
     }
     ?>
 </head>
@@ -22,7 +53,7 @@
 <body class="d-flex flex-column h-100">
     <div class="container">
         <div class="row">
-            <h1 class="text-center">Giriş Yap</h1>
+            <h1 class="text-center">Yönetici Giriş Ekranı</h1>
         </div>
         <div class="row">
             <div class="col"></div>
